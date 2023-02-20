@@ -1,13 +1,14 @@
 <template>
   <div>
     <el-container>
-      <el-aside width="200px">
+      <el-aside :width="isCollapse?'':'200px'">
         <common-aside></common-aside>
       </el-aside>
       <el-container>
         <el-header>
           <common-header></common-header>
         </el-header>
+        <common-tag></common-tag>
         <el-main>
           <!-- 子路由出口 -->
           <router-view></router-view>
@@ -17,25 +18,32 @@
   </div>
 </template>
 <script>
-import CommonAside from '@/components/CommonAside'
-import  CommonHeader from '@/components/CommonHeader'
-import { getData } from '@/api/index'
+import CommonAside from "@/components/CommonAside";
+import CommonHeader from "@/components/CommonHeader";
+import CommonTag from "@/components/CommonTag"
+import { getData } from "@/api/index";
 export default {
   name: "Main",
   components: {
     CommonAside,
-    CommonHeader
+    CommonHeader,
+    CommonTag
   },
-  data(){
-   return {}
+  data() {
+    return {};
   },
-  methods:{},
+  methods: {},
   mounted() {
-    getData().then((data) => {
+    getData().then(data => {
       console.log(data);
-    })
+    });
   },
-}
+  computed: {
+    isCollapse() {
+      return this.$store.state.tab.isCollapse;
+    }
+  }
+};
 </script>
 <style scoped lang="less">
 .el-header {

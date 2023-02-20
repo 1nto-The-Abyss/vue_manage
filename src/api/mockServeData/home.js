@@ -24,7 +24,7 @@ export default {
         videoData: [
           {
             name: '小米',
-            value: 2999
+            value: 3999
           },
           {
             name: '苹果',
@@ -32,15 +32,15 @@ export default {
           },
           {
             name: 'vivo',
-            value: 1999
+            value: 2500
           },
           {
             name: 'oppo',
-            value: 1500
+            value: 5000
           },
           {
             name: '魅族',
-            value: 500
+            value: 2000
           },
           {
             name: '三星',

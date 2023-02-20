@@ -3,7 +3,12 @@
     <div class="l-content">
       <el-button icon="el-icon-menu" size="mini" @click="handleMenu"></el-button>
       <!-- 面包屑 -->
-      <span class="text">首页</span>
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item
+        v-for="item in tags"
+        :key="item.path" 
+        :to="{ path: item.path }">{{item.label}}</el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
     <div class="r-content">
       <el-dropdown>
@@ -20,6 +25,7 @@
 </template>
 <script>
 import avatarImg from "../assets/images/avatar.png"
+import {mapState } from 'vuex'
 export default {
   name: "CommonHeader",
   data() {
@@ -31,7 +37,15 @@ export default {
     handleMenu() {
       this.$store.commit('collapseMenu')
     }
-  }
+  },
+  computed: {
+    ...mapState({
+      tags: state => state.tab.tabList
+    })
+  },
+  mounted() {
+    console.log(this.tags);
+  },
 };
 </script>
 <style scoped lang="less">
@@ -42,12 +56,27 @@ export default {
   justify-content: space-between;
   align-items: center;
   .l-content {
+    display: flex;
+    align-items: center;
     .el-button {
       margin: 0 30px;
     }
     .text {
       color: #fff;
       font-size: 14px;
+    }
+    ::v-deep .el-breadcrumb__item {
+      .el-breadcrumb__inner {
+        font-weight: 400;
+        &.is-link {
+          color: #666;
+        }
+      }
+      &:last-child {
+        .el-breadcrumb__inner {
+          color: #fff;
+        }
+      }
     }
   }
   .r-content {
