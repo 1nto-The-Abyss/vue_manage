@@ -11,13 +11,13 @@
       </el-breadcrumb>
     </div>
     <div class="r-content">
-      <el-dropdown>
+      <el-dropdown @command="handleCommand">
         <span class="el-dropdown-link">
           <el-avatar :src="avatarImg"></el-avatar>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>个人信息</el-dropdown-item>
-          <el-dropdown-item>退出登录</el-dropdown-item>
+          <el-dropdown-item command="logout">退出登录</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -25,7 +25,8 @@
 </template>
 <script>
 import avatarImg from "../assets/images/avatar.png"
-import {mapState } from 'vuex'
+import { mapState } from 'vuex'
+import Cookies from 'js-cookie'
 export default {
   name: "CommonHeader",
   data() {
@@ -36,6 +37,13 @@ export default {
   methods: {
     handleMenu() {
       this.$store.commit('collapseMenu')
+    },
+    handleCommand(command) {
+      if(command == 'logout') {
+        Cookies.remove('token')
+        sessionStorage.removeItem('menu')
+        this.$router.push('/login')
+      }
     }
   },
   computed: {
@@ -44,7 +52,6 @@ export default {
     })
   },
   mounted() {
-    console.log(this.tags);
   },
 };
 </script>

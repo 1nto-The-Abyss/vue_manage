@@ -46,6 +46,9 @@ export default {
 };
 </script>
 <style scoped lang="less">
+.el-container {
+  height: 100vh;
+}
 .el-header {
   padding: 0;
 }
