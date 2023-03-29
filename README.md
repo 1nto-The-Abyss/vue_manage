@@ -1,24 +1,28 @@
 # vue-manage
 
-## Project setup
-```
-npm install
-```
+## 技术栈
+- vue
+- echarts
+- axios
+- elementUI
+- mock
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 实现功能
+#### 用户登录
+![image](./image/用户登录.png)
+#### 首页
+![image](./image/首页.png)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+#### 商品管理
+商品增删改查
+![image](./image/商品管理.png)
 
-### Lints and fixes files
-```
-npm run lint
-```
+#### 用户管理
+用户信息增删改查
+![image](./image/用户管理.png)
+![image](./image/新增用户.png)
+![image](./image/删除用户.png)
+![image](./image/模糊查询.png)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
